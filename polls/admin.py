@@ -11,6 +11,9 @@ class ChoiceInline(admin.TabularInline):
 class PollAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
+            'fields': ['visible'],
+        }),
+		(None, {
             'fields': ['question'],
         }),
         ('Date information', {
@@ -19,8 +22,8 @@ class PollAdmin(admin.ModelAdmin):
         }),
     ]
     inlines = [ChoiceInline]
-    list_display = ('question', 'pub_date', 'was_published_recently')
-    list_filter = ['pub_date']
+    list_display = ('question', 'pub_date', 'was_published_recently','visible')
+    list_filter = ['pub_date','visible']
     search_fields = ['question']
     date_hierarchy = 'pub_date'
 
